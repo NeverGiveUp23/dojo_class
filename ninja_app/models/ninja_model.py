@@ -1,6 +1,8 @@
 from ninja_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+import re
 
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 class Ninja:
     def __init__(self, data):
         self.id = data['id']
@@ -40,3 +42,14 @@ class Ninja:
             flash("You need to enter your age!")
             valid_ninja = False
         return valid_ninja
+    
+    @staticmethod
+    def validate_email(email):
+        is_valid = True
+        if not EMAIL_REGEX.match(email['email']):
+            flash("Invalid email address!")
+            is_valid = False
+        return is_valid
+
+
+
