@@ -1,5 +1,5 @@
 from ninja_app.config.mysqlconnection import connectToMySQL
-
+from flask import flash
 
 class Ninja:
     def __init__(self, data):
@@ -26,3 +26,17 @@ class Ninja:
         for ninja in results:
             ninjas.append(cls(ninja))
         return ninjas
+    
+    @staticmethod
+    def validate_ninja(ninja):
+        valid_ninja = True
+        if len(ninja['first_name']) == 0:
+            flash("You need to enter your first name!")
+            valid_ninja = False
+        if len(ninja['last_name']) == 0:
+            flash("You need to enter your last name!")
+            valid_ninja = False
+        if len(ninja['age']) == 0:
+            flash("You need to enter your age!")
+            valid_ninja = False
+        return valid_ninja

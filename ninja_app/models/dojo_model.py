@@ -1,5 +1,5 @@
 from ninja_app.config.mysqlconnection import connectToMySQL
-
+from flask import flash
 
 class Dojo:
     def __init__(self, data):
@@ -24,3 +24,11 @@ class Dojo:
         query = "INSERT INTO dojos (name, created_at, updated_at) VALUES (%(name)s,NOW(),NOW());"
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return result
+    
+    @staticmethod
+    def validate_name(dojo):
+        is_valid = True
+        if len(dojo['name']) < 5:
+            flash("Name needs to be at least 3 characters.")
+            is_valid = False
+        return is_valid

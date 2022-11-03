@@ -21,7 +21,10 @@ def new():
 
 @app.route('/user/create',methods=['POST'])
 def create():
-    print(request.form)
+    #setting up the validation to pass through
+    if not Dojo.validate_name(request.form):
+        return redirect('/dojos')
+    #else no errors run this code
     Dojo.save(request.form)
     return redirect('/dojos')
   

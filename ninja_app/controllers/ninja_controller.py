@@ -21,7 +21,10 @@ def add_dojo():
 
 @app.route('/ninja/create',methods=['POST'])
 def create_ninja():
-    print(request.form)
+  #an if statement for the form if not filled out correctly
+    if not Ninja.validate_ninja(request.form):
+      return redirect('/new/ninjas')
+    #this will save if the form was filled out correctly
     Ninja.save_ninja(request.form)
     return redirect('/dojos')
   
