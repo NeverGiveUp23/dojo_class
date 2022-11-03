@@ -1,0 +1,30 @@
+
+
+#main{
+  margin-top: 20px;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#leftSide{
+  width: 50%;
+  height: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#rightSide{
+  border: 2px solid black;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
