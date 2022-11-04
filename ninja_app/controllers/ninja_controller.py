@@ -29,4 +29,4 @@ def create_ninja():
     #this will save if the form was filled out correctly
     Ninja.save_ninja(request.form)
     return redirect('/dojos')
-  
+ 
